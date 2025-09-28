@@ -4,6 +4,7 @@ export async function refreshCookies() {
   // 根据环境变量决定是否使用executablePath
   const isProduction = process.env.NODE_ENV === 'production';
   const launchOptions = { headless: "new" };
+  console.log( 'process.env.NODE_ENV',process.env.NODE_ENV);
   
   // 只在非生产环境使用executablePath
   if (!isProduction) {
