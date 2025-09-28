@@ -104,7 +104,7 @@ const config = {
     enabled: false,
     
     // 监控间隔（毫秒）
-    interval: 5 * 1000, // 5秒
+    interval: 3 * 1000, // 5秒
     
     // 最大监控时长（毫秒）
     maxDuration: 24 * 60 * 60 * 1000, // 24小时

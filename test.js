@@ -42,7 +42,7 @@ class AppleInventoryChecker {
   setCookie(cookie = null) {
     // 优先级：传入参数 > 配置文件 > 环境变量
     const finalCookie = cookie || config.cookie.getCookie();
-    console.log('finalCookie',finalCookie);
+    // console.log('finalCookie',finalCookie);
     if (finalCookie) {
       this.client.defaults.headers['Cookie'] = finalCookie;
       console.log('✅ Cookie 已设置');
@@ -202,7 +202,7 @@ class AppleInventoryChecker {
       // 检查是否有无货提示
       const noStockMessage = body.noSimilarModelsText;
       if (noStockMessage) {
-        console.log(`\n⚠️  苹果官方提示: ${noStockMessage}`);
+        // console.log(`\n⚠️  苹果官方提示: ${noStockMessage}`);
       }
 
       // 检查推荐产品
@@ -241,7 +241,7 @@ class AppleInventoryChecker {
         const distance = store.storeDistanceWithUnit || '距离未知';
         
         console.log(`${index + 1}. ${store.storeName} - ${status}`);
-        console.log(`   📍 ${address} (${distance})`);
+        // console.log(`   📍 ${address} (${distance})`);
         
         // 显示推荐机型信息（如果有 partsAvailability）
         if (Object.keys(partsAvailability).length > 0) {
@@ -285,13 +285,13 @@ class AppleInventoryChecker {
         rawData: config.debug.enabled ? data : null
       };
 
-      console.log(`\n🎯 总结:`);
-      console.log(`上海门店: ${shanghaiStores.length}/${stores.length}`);
+      // console.log(`\n🎯 总结:`);
+      // console.log(`上海门店: ${shanghaiStores.length}/${stores.length}`);
       console.log(`有货门店: ${availableCount}/${shanghaiStores.length}`);
       console.log(`库存状态: ${result.hasStock ? '有货' : '无货'}`);
       
       if (noStockMessage) {
-        console.log(`\n📝 官方说明: ${noStockMessage}`);
+        // console.log(`\n📝 官方说明: ${noStockMessage}`);
       }
       
       if (recommendedProducts.length > 0) {
