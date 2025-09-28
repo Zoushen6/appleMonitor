@@ -6,7 +6,8 @@
   "main": "test.js",
   "scripts": {
     "start": "node test.js",
-    "dev": "node test.js"
+    "dev": "set NODE_ENV=development && node test.js",
+    "prod": "set NODE_ENV=production && node test.js"
   },
   "dependencies": {
     "axios": "^1.6.0",
