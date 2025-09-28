@@ -3,7 +3,7 @@ import puppeteer from "puppeteer";
 export async function refreshCookies() {
   // 根据环境变量决定是否使用executablePath
   const isProduction = process.env.NODE_ENV === 'production';
-  const launchOptions = { headless: "new" };
+  const launchOptions = { headless: "new" ,args: ['--no-sandbox', '--disable-setuid-sandbox']};
   console.log( 'process.env.NODE_ENV',process.env.NODE_ENV);
   
   // 只在非生产环境使用executablePath
