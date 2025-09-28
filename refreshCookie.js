@@ -3,14 +3,31 @@ import puppeteer from "puppeteer";
 export async function refreshCookies() {
   // 根据环境变量决定是否使用executablePath
   const isProduction = process.env.NODE_ENV === 'production';
-  const launchOptions = { headless: "new" ,args: ['--no-sandbox', '--disable-setuid-sandbox']};
-  console.log( 'process.env.NODE_ENV',process.env.NODE_ENV);
-  
+  const launchOptions = {
+    headless: "new", args: [
+      '--no-sandbox',
+      '--disable-setuid-sandbox',
+      '--disable-dev-shm-usage',
+      '--disable-gpu',
+      '--disable-extensions',
+      '--disable-plugins',
+      '--disable-images', // 禁用图片加载
+      '--disable-javascript', // 禁用JS（如果不需要）
+      '--disable-css', // 禁用CSS（如果不需要）
+      '--no-first-run',
+      '--no-default-browser-check',
+      '--disable-background-timer-throttling',
+      '--disable-backgrounding-occluded-windows',
+      '--disable-renderer-backgrounding'
+    ]
+  };
+  console.log('process.env.NODE_ENV', process.env.NODE_ENV);
+
   // 只在非生产环境使用executablePath
   if (!isProduction) {
     launchOptions.executablePath = "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe";
   }
-  
+
   const browser = await puppeteer.launch(launchOptions);
   const page = await browser.newPage();
   await page.goto("https://www.apple.com.cn/shop/buy-iphone/iphone-17-pro/MG034CH/A");
