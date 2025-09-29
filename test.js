@@ -1,6 +1,7 @@
 import axios from 'axios';
 import config from './config.js';
 import { refreshCookies } from './refreshCookie.js';
+import {dataTest} from './data-test.js';
 const cookie = await refreshCookies();
 config.cookie.value = cookie;
 /**
@@ -180,6 +181,7 @@ class AppleInventoryChecker {
         // console.log(JSON.stringify(data, null, 2));
       }
       
+      // const body = dataTest.body || {};
       const body = data.body || {};
       
       // 检查是否有门店数据
@@ -239,6 +241,7 @@ class AppleInventoryChecker {
         const status = isAvailable ? '✅ 有货' : '❌ 无货';
         const address = store.address?.address2 || store.address?.address || '地址未知';
         const distance = store.storeDistanceWithUnit || '距离未知';
+        // console.log('targetProduct',targetProduct);
         
         console.log(`${index + 1}. ${store.storeName} - ${status}`);
         // console.log(`   📍 ${address} (${distance})`);
